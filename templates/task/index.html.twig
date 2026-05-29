@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des taches{% endblock %}
+
+{% block body %}
+<h1>Liste des taches</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Déscription</th>
+            <th>Status</th>
+            <th>Date Limite</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.title }}</td>
+            <td>{{ task.description }}</td>
+            <td>{{('task_status.'~ task.status.value ~'.label')|trans}}</td>
+            <td>{{ task.deadline ? task.deadline|date('d-m-Y') : '' }}</td>
+            <td>
+                <a href="{{ path('app_task_show', {'id': task.id}) }}">Détail</a>
+                <a href="{{ path('app_task_edit', {'id': task.id}) }}">Modifier</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="6">Pas de tache trouvé</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ path('app_task_new') }}">Créer nouvelle tache</a>
+{% endblock %}

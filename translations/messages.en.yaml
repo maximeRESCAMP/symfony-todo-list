@@ -1,0 +1,12 @@
+#task_status
+
+task_status.to_do.label: 'To Do'
+task_status.in_progress.label: 'Progress'
+task_status.completed.label: 'Completed'
+
+# form
+# task
+task.title: 'Titre'
+task.description: 'Déscription'
+task.status: 'Statut'
+task.deadline: 'Date Limite'

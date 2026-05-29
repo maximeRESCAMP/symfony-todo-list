@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une tache{% endblock %}
+
+{% block body %}
+<h1>Créer une tache</h1>
+
+{{ include('task/_form.html.twig') }}
+
+<a href="{{ path('app_task_index') }}">Retour à la page des taches</a>
+{% endblock %}
