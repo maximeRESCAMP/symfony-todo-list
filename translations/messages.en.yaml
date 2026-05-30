@@ -10,3 +10,24 @@ task.title: 'Titre'
 task.description: 'Déscription'
 task.status: 'Statut'
 task.deadline: 'Date Limite'
+task.actions: 'Actions'
+
+
+flash.success.task.create: 'Task create with success'
+flash.success.task.update: 'Task update with success'
+flash.success.task.delete: 'Task delete with success'
+
+confirm.delete.task: 'Are you sure you want to delete this task?'
+
+form.delete: 'Delete'
+form.update: 'Update'
+form.detail: 'Detail'
+form.save: 'Save'
+task.update: 'Update this task'
+task.list: 'Liste des taches'
+task.create: 'Créer une tache'
+task.detail: 'Détail de la tache'
+task.back_page: 'Back to the Tasks page'
+task.new: 'Create new task'
+
+task.list.not: 'not find task'

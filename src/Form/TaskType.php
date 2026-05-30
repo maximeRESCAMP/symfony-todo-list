@@ -49,7 +49,7 @@ class TaskType extends AbstractType
             ->add('deadline', DateType::class, [
                 'required' => false,
                 'widget'   => 'single_text',
-                'label' => t('form.task.deadline')
+                'label' => t('task.deadline')
             ])
         ;
     }

@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des taches{% endblock %}
+{% block title %}{{'task.list'|trans}}{% endblock %}
 
 {% block body %}
-<h1>Liste des taches</h1>
+<h1>{{'task.list'|trans}}</h1>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Titre</th>
-            <th>Déscription</th>
-            <th>Status</th>
-            <th>Date Limite</th>
-            <th>actions</th>
+            <th>{{'task.title'|trans}}</th>
+            <th>{{'task.description'|trans}}</th>
+            <th>{{'task.status'|trans}}</th>
+            <th>{{'task.deadline'|trans}}</th>
+            <th>{{'task.actions'|trans}}</th>
         </tr>
     </thead>
     <tbody>
@@ -23,17 +23,17 @@
             <td>{{('task_status.'~ task.status.value ~'.label')|trans}}</td>
             <td>{{ task.deadline ? task.deadline|date('d-m-Y') : '' }}</td>
             <td>
-                <a href="{{ path('app_task_show', {'id': task.id}) }}">Détail</a>
-                <a href="{{ path('app_task_edit', {'id': task.id}) }}">Modifier</a>
+                <a href="{{ path('app_task_show', {'id': task.id}) }}">{{'form.detail'|trans}}</a>
+                <a href="{{ path('app_task_edit', {'id': task.id}) }}">{{'form.update'|trans}}</a>
             </td>
         </tr>
         {% else %}
         <tr>
-            <td colspan="6">Pas de tache trouvé</td>
+            <td colspan="6">{{'task.list.not'|trans}}</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 
-<a href="{{ path('app_task_new') }}">Créer nouvelle tache</a>
+<a href="{{ path('app_task_new') }}">{{'task.new'|trans}}</a>
 {% endblock %}

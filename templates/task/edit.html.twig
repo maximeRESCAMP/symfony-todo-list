@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier la tache{% endblock %}
+{% block title %}
+	{{'task.update' |trans}}
+{% endblock %}
 
 {% block body %}
-    <h1>Modifier la tache</h1>
+	<h1>{{'task.update' |trans}}</h1>
 
-    {{ include('task/_form.html.twig', {'button_label': 'Update'}) }}
+	{{ include('task/_form.html.twig', {'button_label': 'form.update'}) }}
 
-    <a href="{{ path('app_task_index') }}">Retour à la page des taches</a>
+	<a href="{{ path('app_task_index') }}">{{'task.back_page'|trans}}</a>
 
-    {{ include('task/_delete_form.html.twig') }}
+	{{ include('task/_delete_form.html.twig') }}
 {% endblock %}

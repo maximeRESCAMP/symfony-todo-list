@@ -1,34 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Detail de la tache {{ task.title }}<{% endblock %}
-
-{% block body %}
-<h1>Detail de la tache {{ task.title }}</h1>
-
-<table class="table">
-    <tbody>
-        <tr>
-            <th>{{'task.title'|trans}}</th>
-            <td>{{ task.title }}</td>
-        </tr>
-        <tr>
-            <th>{{'task.description'|trans}}</th>
-            <td>{{ task.description }}</td>
-        </tr>
-        <tr>
-            <th>{{'task.status'|trans}}</th>
-            <td>{{ task.status.value }}</td>
-        </tr>
-        <tr>
-            <th>{{'task.deadline'|trans}}</th>
-            <td>{{ task.deadline ? task.deadline|date('d-m-Y') : '' }}</td>
-        </tr>
-    </tbody>
-</table>
-
-<a href="{{ path('app_task_index') }}">Retour à la page des taches</a>
-
-<a href="{{ path('app_task_edit', {'id': task.id}) }}">Modifier la tache</a>
-
-{{ include('task/_delete_form.html.twig') }}
+{% block title %}
+{{'task.detail'|trans}} {{ task.title }}
 {% endblock %}
+
+
+	{% block body %} 
+    <h1>{{'task.detail'|trans}} {{ task.title }}</h1>
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>{{'task.title'|trans}}</th>
+					<td>{{ task.title }}</td>
+				</tr>
+				<tr>
+					<th>{{'task.description'|trans}}</th>
+					<td>{{ task.description }}</td>
+				</tr>
+				<tr>
+					<th>{{'task.status'|trans}}</th>
+					<td>{{ task.status.value }}</td>
+				</tr>
+				<tr>
+					<th>{{'task.deadline'|trans}}</th>
+					<td>{{ task.deadline ? task.deadline|date('d-m-Y') : '' }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_task_index') }}">{{'task.back_page'|trans}}</a>
+
+		<a href="{{ path('app_task_edit', {'id': task.id}) }}">{{'task.update'|trans}}</a>
+
+		{{ include('task/_delete_form.html.twig') }}
+	{% endblock %}

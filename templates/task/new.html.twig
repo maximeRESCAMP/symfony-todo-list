@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Créer une tache{% endblock %}
+{% block title %}
+	{{'task.create'|trans}}
+{% endblock %}
 
 {% block body %}
-<h1>Créer une tache</h1>
+	<h1>{{'task.create'|trans}}</h1>
 
-{{ include('task/_form.html.twig') }}
+	{{ include('task/_form.html.twig') }}
 
-<a href="{{ path('app_task_index') }}">Retour à la page des taches</a>
+	<a href="{{ path('app_task_index') }}">{{'task.back_page'|trans}}</a>
 {% endblock %}

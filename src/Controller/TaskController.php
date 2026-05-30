@@ -10,11 +10,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[Route('/')]
 final class TaskController extends AbstractController
 {
-    public function __construct(private EntityManagerInterface $entityManager) {}
+    public function __construct(private EntityManagerInterface $entityManager, private TranslatorInterface $translatorInterface) {}
     #[Route(name: 'app_task_index', methods: ['GET'])]
     public function index(TaskRepository $taskRepository): Response
     {
@@ -33,7 +34,7 @@ final class TaskController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->entityManager->persist($task);
             $this->entityManager->flush();
-            $this->addFlash('success','Tache créer');
+            $this->addFlash('success', $this->translatorInterface->trans('flash.success.task.create'));
 
             return $this->redirectToRoute(route: 'app_task_index', status: Response::HTTP_SEE_OTHER);
         }
@@ -59,7 +60,7 @@ final class TaskController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->entityManager->flush();
-            $this->addFlash('success','Tache Modifier');
+            $this->addFlash('success', $this->translatorInterface->trans('flash.success.task.update'));
 
             return $this->redirectToRoute(route: 'app_task_index', status: Response::HTTP_SEE_OTHER);
         }
@@ -76,8 +77,7 @@ final class TaskController extends AbstractController
         if ($this->isCsrfTokenValid('delete' . $task->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($task);
             $entityManager->flush();
-                        $this->addFlash('success','Tache Supprimer');
-
+            $this->addFlash('success', $this->translatorInterface->trans('flash.success.task.delete'));
         }
 
         return $this->redirectToRoute(route: 'app_task_index', status: Response::HTTP_SEE_OTHER);
