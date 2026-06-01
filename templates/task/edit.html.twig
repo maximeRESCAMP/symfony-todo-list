@@ -1,15 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{'task.update' |trans}}
+{{'task.update' |trans}}
 {% endblock %}
 
 {% block body %}
-	<h1>{{'task.update' |trans}}</h1>
+ <div class="d-flex align-items-center justify-content-between mb-4">
+        <h1 class="h4 fw-bold mb-0">{{ 'task.update'|trans }}</h1>
+        <a href="{{ path('app_task_index') }}" class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center gap-2">
+            <i class="bi bi-arrow-left"></i>{{ 'task.back_page'|trans }}
+        </a>
+    </div>
 
-	{{ include('task/_form.html.twig', {'button_label': 'form.update'}) }}
+{{ include('task/_form.html.twig', {'button_label': 'form.update'}) }}
 
-	<a href="{{ path('app_task_index') }}">{{'task.back_page'|trans}}</a>
-
+<div class="d-flex justify-content-end mt-3 bg-danger">
 	{{ include('task/_delete_form.html.twig') }}
+</div>
+
 {% endblock %}

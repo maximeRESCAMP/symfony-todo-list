@@ -1,13 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	{{'task.create'|trans}}
+{{'task.create'|trans}}
 {% endblock %}
 
 {% block body %}
-	<h1>{{'task.create'|trans}}</h1>
-
-	{{ include('task/_form.html.twig') }}
-
-	<a href="{{ path('app_task_index') }}">{{'task.back_page'|trans}}</a>
+<div class="d-flex align-items-center justify-content-between mb-4">
+	<h1 class="h4 fw-bold mb-0">{{ 'task.create'|trans }}</h1>
+	<a href="{{ path('app_task_index') }}"
+		class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center gap-2">
+		<i class="bi bi-arrow-left"></i>{{ 'task.back_page'|trans }}
+	</a>
+</div>
+{{ include('task/_form.html.twig') }}
 {% endblock %}

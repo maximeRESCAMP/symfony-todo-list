@@ -34,7 +34,11 @@ class TaskType extends AbstractType
                 'description',
                 null,
                 [
-                    'label' => t('task.description')
+                    'label' => t('task.description'),
+                    'attr'  => [
+                        'rows'  => 3,
+                        'style' => 'resize:vertical',
+                    ],
                 ]
             )
             ->add(
