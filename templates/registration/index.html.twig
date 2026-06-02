@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{'user.register'|trans}}
+{% endblock %}
+
+{% block body %}
+<div class="d-flex align-items-center justify-content-between mb-4">
+	<h1 class="h4 fw-bold mb-0">{{'user.register'|trans}}</h1>
+	<a href="{{ path('app_login') }}"
+		class="btn btn-outline-secondary btn-sm d-inline-flex align-items-center gap-2">
+		<i class="bi bi-arrow-left"></i>{{ 'user.page.login'|trans }}
+	</a>
+</div>
+{{ form_start(form, { attr: { class: 'card p-4 shadow-sm border-0 rounded-3' } }) }}
+{{ form_widget(form) }}
+<div class="d-flex justify-content-end gap-2 mt-3">
+
+    <button class="btn btn-dark btn-sm d-inline-flex align-items-center gap-2"> <i class="bi bi-floppy"></i>
+        {{ 'user.form.sign-up' | trans }}</button>
+</div>
+{{ form_end(form) }}
+{% endblock %}

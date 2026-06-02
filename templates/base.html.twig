@@ -44,6 +44,15 @@
 							<i class="bi bi-check2-square me-1"></i>Nouvelles taches
 						</a>
 					</li>
+					<li>
+						{% if app.user %}
+						<a href="{{ path('app_logout') }}">Se déconnnectez</a>
+						{% else %}
+						<a href="{{ path('app_login') }}">Se Connetz</a>
+						<a href="{{ path('app_registration') }}">S'inscrire</a>
+						{% endif %}
+
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -53,7 +62,7 @@
 	<div class="container mt-3">
 		{% for label, messages in app.flashes %}
 		{% for message in messages %}
-		<div class="alert alert-{{ label }} alert-dismissible fade show" role="alert" >
+		<div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
 			{{ message }}
 			<button type="button" class="btn-close" data-bs-dismiss="alert" fade></button>
 		</div>

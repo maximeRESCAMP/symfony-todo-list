@@ -31,3 +31,14 @@ task.back_page: 'Back to the Tasks page'
 task.new: 'Create new task'
 
 task.list.not: 'not find task'
+
+
+user.register: 'Register'
+
+user.page.login: 'Back to the login page'
+
+user.form.sign-up: 'Sign up'
+
+registration.flash_sucess: 'Registration successful'
+
+access_denied: 'Access Denied'
