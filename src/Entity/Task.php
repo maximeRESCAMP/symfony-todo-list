@@ -8,7 +8,6 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Constraints\Regex;
 
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
 #[UniqueEntity('title')]
@@ -17,10 +16,10 @@ class Task
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private int $id;
+    private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    #[Assert\NotNull]
+    #[Assert\NotNull()]
     #[Assert\NotBlank]
     #[Assert\Length(
         min: 2,
@@ -44,7 +43,7 @@ class Task
 
     #[ORM\ManyToOne(inversedBy: 'tasks')]
     #[ORM\JoinColumn(nullable: false)]
-    private User $user;
+    private ?User $user =null;
 
   
 

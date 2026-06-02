@@ -88,14 +88,14 @@ final class TaskController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_task_delete', methods: ['POST'])]
-    public function delete(Request $request, Task $task, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, Task $task): Response
     {
         if (!$this->security->isGranted(TaskVoter::DELETE, $task)) {
             throw $this->createAccessDeniedException($this->translatorInterface->trans('access_denied'));
         }
         if ($this->isCsrfTokenValid('delete' . $task->getId(), $request->getPayload()->getString('_token'))) {
-            $entityManager->remove($task);
-            $entityManager->flush();
+            $this->entityManager->remove($task);
+            $this->entityManager->flush();
             $this->addFlash('success', $this->translatorInterface->trans('flash.success.task.delete'));
         }
 

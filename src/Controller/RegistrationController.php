@@ -9,12 +9,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Contracts\Translation\TranslatableInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class RegistrationController extends AbstractController
 {
 
-    public function __construct(private EntityManagerInterface $em,private TranslatableInterface $translatable)
+    public function __construct(private EntityManagerInterface $em,private TranslatorInterface $translatable)
     {
     }
     #[Route('/registration', name: 'app_registration')]
@@ -28,7 +28,7 @@ final class RegistrationController extends AbstractController
             $this->em->persist($user);
             $this->em->flush();
             $this->addFlash('success',$this->translatable->trans('registration.flash_sucess'));
-            return $this->redirectToRoute(route: 'app_task_index', status: 301);
+            return $this->redirectToRoute(route: 'app_task_index', status: Response::HTTP_SEE_OTHER);
         }
         return $this->render('registration/index.html.twig', [
             'form' => $form,
